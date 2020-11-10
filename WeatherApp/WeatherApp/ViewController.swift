@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     var currentWeather : CurrentWeather!
     var dayOrNight = ""
 
@@ -20,16 +20,31 @@ class ViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var weekDayLabel: UILabel!
     @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         currentWeather = CurrentWeather()
         currentWeather.downloadCuerrentWeather {
             self.updateCurrentWeather()
         }
     }
 
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ForecastWeatherCollectionCell
+        
+        return cell
+    }
+    
     
     func updateCurrentWeather() {
         cityLabel.text = currentWeather.city
@@ -49,8 +64,8 @@ class ViewController: UIViewController {
         }
         
     }
-
     
+        
     func dayView(){
         backgroundView.image = UIImage(named: "catalinaD")
         iconView.image = UIImage(named:currentWeather.icon)
