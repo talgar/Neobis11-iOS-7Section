@@ -55,9 +55,7 @@ class CurrentWeather {
     
     func downloadCuerrentWeather(completed: @escaping DownloadComplete){
         Alamofire.request(API_URL).responseJSON { (response) in
-           //print(response)
             let result = response.result
-            //print(result.value)
             let json = JSON(result.value)
             self._city = json["name"].stringValue
             let tempDate = json["dt"].double

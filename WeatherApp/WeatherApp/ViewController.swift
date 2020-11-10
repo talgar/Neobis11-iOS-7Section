@@ -11,13 +11,16 @@ class ViewController: UIViewController {
 
     var currentWeather : CurrentWeather!
     var dayOrNight = ""
+
     
-    @IBOutlet weak var imageView: UIImageView!
+
+    @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var weekDayLabel: UILabel!
-    @IBOutlet weak var changeView: UIView!
+    @IBOutlet weak var iconView: UIImageView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,8 @@ class ViewController: UIViewController {
         weekDayLabel.text = currentWeather.date
         
         self.dayOrNight = currentWeather.icon
-        
+
+
         if dayOrNight.last! == "d" {
             dayOrNight = "d"
             self.dayView()
@@ -48,13 +52,15 @@ class ViewController: UIViewController {
 
     
     func dayView(){
-        changeView.backgroundColor = UIColor.systemTeal
-        imageView.image = UIImage(named: "day")
+        backgroundView.image = UIImage(named: "catalinaD")
+        iconView.image = UIImage(named:currentWeather.icon)
+
     }
     
     func nightView(){
-        changeView.backgroundColor = UIColor.secondaryLabel
-        imageView.image = UIImage(named: "night")
+        backgroundView.image = UIImage(named: "catalinaN")
+        iconView.image = UIImage(named:currentWeather.icon)
+
     }
     
 }
