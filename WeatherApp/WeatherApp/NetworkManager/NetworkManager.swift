@@ -6,42 +6,39 @@
 ////
 //
 import Foundation
+import Alamofire
+import SwiftyJSON
 
-let API_URL = "http://api.openweathermap.org/data/2.5/weather?lat=42.874722&lon=74.612222&APPID=3331e666239ea2e7435b26c22893307c"
+let currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=42.874722&lon=74.612222&APPID=3331e666239ea2e7435b26c22893307c"
 
 typealias DownloadComplete = () -> ()
 
-//import Alamofire
-//import SwiftyJSON
-//
-//class NetworkManager {
-//
-//    static let network = NetworkManager()
-//
-//    class func loadCW(completion: @escaping (CurrentWeather)->()) {
-//
-//        let jsonURL = "https://api.weatherbit.io/v2.0/current?city=Rust,NC&key=a9218ea8a690411984052d7a011f8e96"
-//
-//        guard let url = URL(string: jsonURL) else { return }
-//
-//        Alamofire.request(url).validate().responseJSON {(response) in
-//            let result = response.data
-//
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.dateDecodingStrategy = .secondsSince1970
-//                let info = try decoder.decode(CurrentWeather.self, from: result!)
-//
-//                DispatchQueue.main.async {
-//                    completion(info)
-//                }
-//            } catch let jsonError {
-//                print("ERROR...", jsonError)
-//            }
-//        }
-//    }
-//
-//
-//
-//
-//}
+
+class NetworkManager {
+    static let shared = NetworkManager()
+    
+    func loadForecastWeather( completion:  @escaping (ForecastWeather)->()){
+        
+        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?lat=42.874722&lon=74.612222&APPID=079587841f01c6b277a82c1c7788a6c3"
+        
+        guard let url = URL(string: jsonUrlString) else { return }
+        
+        Alamofire.request(url).validate().responseJSON { (response) in
+            let result = response.data
+            
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
+                let informations = try decoder.decode(ForecastWeather.self, from: result!)
+                
+                DispatchQueue.main.async {
+                    completion(informations)
+                }
+            } catch let jsonErr {
+                print("Error serializing json:", jsonErr)
+            }
+        }
+    }
+    
+}

@@ -6,17 +6,16 @@
 //
 
 import Foundation
-import SwiftyJSON
 import Alamofire
+import SwiftyJSON
 
 class CurrentWeather {
     
-    private var _date : String!
-    private var _city : String!
-    private var _description : String!
-    private var _temp : Double!
-    private var _icon : String!
-    
+    var _city : String!
+    var _date : String!
+    var _icon : String!
+    var _description : String!
+    var _temp : Double!
     
     var date : String {
         if _date == nil {
@@ -54,7 +53,7 @@ class CurrentWeather {
     }
     
     func downloadCuerrentWeather(completed: @escaping DownloadComplete){
-        Alamofire.request(API_URL).responseJSON { (response) in
+        Alamofire.request(currentWeatherURL).responseJSON { (response) in
             let result = response.result
             let json = JSON(result.value)
             self._city = json["name"].stringValue
@@ -74,3 +73,24 @@ class CurrentWeather {
     }
 }
 
+
+struct ForecastWeather : Decodable {
+    var list : [List]?
+}
+
+struct List: Decodable {
+    var dt: Int?
+    var main: Main?
+    var weather: [Weather]?
+    var dt_txt: String?
+}
+
+struct Main: Decodable {
+    var temp: Double?
+}
+
+struct Weather: Decodable {
+    var main: String?
+    var description: String?
+    var icon: String?
+}
