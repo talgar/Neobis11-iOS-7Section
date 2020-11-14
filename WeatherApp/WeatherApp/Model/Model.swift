@@ -52,6 +52,7 @@ class CurrentWeather {
         return _icon
     }
     
+    //MARK: downloadCurrentWeather func
     func downloadCuerrentWeather(completed: @escaping DownloadComplete){
         Alamofire.request(currentWeatherURL).responseJSON { (response) in
             let result = response.result

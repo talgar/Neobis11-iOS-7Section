@@ -8,6 +8,9 @@
 import Foundation
 
 extension Double {
+    
+    //MARK: func for temp
+    
     func rounded(places:Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
@@ -26,6 +29,9 @@ extension Double {
 }
 
 extension Date {
+    
+    //MARK: func for date
+    
     func dayOfTheWeek() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
@@ -34,6 +40,9 @@ extension Date {
 }
 
 extension Int {
+    
+    //MARK: func for weekdays
+    
     func convertToWD(_ num: Int) -> String {
         return unixTimeToWD(unixTime: Double(self), offset: num)
     }

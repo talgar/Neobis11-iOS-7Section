@@ -14,6 +14,8 @@ let currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=42.8
 typealias DownloadComplete = () -> ()
 
 
+//MARK: download func for ForecastWeather 
+
 class NetworkManager {
     static let shared = NetworkManager()
     

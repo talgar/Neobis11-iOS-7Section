@@ -21,7 +21,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var weekDayLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -34,7 +34,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         loadForecastWeather()
 
     }
-
+    
+    
+    //MARK: load funcs
+    
     func loadCurrentWeather() {
         currentWeather = CurrentWeather()
         currentWeather.downloadCuerrentWeather {
@@ -46,11 +49,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         NetworkManager.shared.loadForecastWeather(completion: updateForecastWeather)
     }
     
+    
+    //MARK: Update funcs
+    
     func updateCurrentWeather() {
         cityLabel.text = currentWeather.city
         tempLabel.text = "\(Int(currentWeather.temp))°"
         descriptionLabel.text = currentWeather.description
-        weekDayLabel.text = currentWeather.date
+        dateLabel.text = currentWeather.date
         
         self.dayOrNight = currentWeather.icon
 
@@ -77,6 +83,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.collectionView.reloadData()
     }
     
+    //MARK: CollectionView for ForecastWeather
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
@@ -98,11 +105,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: 180, height: 150)
     }
     
+    
+    //MARK: funcs for backView and weather icon
     
     func dayView(){
         backgroundView.image = UIImage(named: "catalinaD")
