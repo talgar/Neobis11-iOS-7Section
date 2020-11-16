@@ -58,9 +58,10 @@ extension Int {
                 cal.timeZone = tz
             }
             
-            let weekday = (cal.component(.weekday, from: time) + offset - 0) % 7
+            let weekday = (cal.component(.weekday, from: time) + offset - 1 ) % 7
 
             return Calendar.current.weekdaySymbols[weekday]
         }
     }
+
 

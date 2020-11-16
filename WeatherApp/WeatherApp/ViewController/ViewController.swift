@@ -57,7 +57,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tempLabel.text = "\(Int(currentWeather.temp))°"
         descriptionLabel.text = currentWeather.description
         dateLabel.text = currentWeather.date
-        
+
         self.dayOrNight = currentWeather.icon
 
         if dayOrNight.last! == "d" {
@@ -101,12 +101,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.nightTempLabel.text = nightList[indexPath.row].main!.temp!.convertToCelsius()
         cell.weekDayLabel.text = dt.convertToWD(indexPath.row)
         cell.forecastWImageView.image = UIImage(named:dayList[indexPath.row].weather![0].icon!)
-        cell.dateLabel.text = dayList[indexPath.row].dt_txt!
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 180, height: 150)
+        return .init(width: 180, height: 120)
     }
     
     
