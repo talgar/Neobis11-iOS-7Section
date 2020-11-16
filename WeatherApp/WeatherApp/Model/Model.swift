@@ -16,7 +16,6 @@ class CurrentWeather {
     var _icon : String!
     var _description : String!
     var _temp : Double!
-    var _weekday: Double!
     
     var date : String {
         if _date == nil {
@@ -53,13 +52,6 @@ class CurrentWeather {
         return _icon
     }
     
-    var weekday : Double {
-        if _weekday == nil {
-            _weekday = 0
-        }
-        return _weekday
-    }
-    
     //MARK: downloadCurrentWeather func
     func downloadCuerrentWeather(completed: @escaping DownloadComplete){
         Alamofire.request(currentWeatherURL).responseJSON { (response) in
@@ -77,7 +69,6 @@ class CurrentWeather {
             let downloadedTemp = json["main"]["temp"].double
             self._temp = (downloadedTemp! - 273.15).rounded(places: 0)
             self._icon = json["weather"][0]["icon"].stringValue
-            self._weekday = json["dt"].double
             completed()
         }
     }
