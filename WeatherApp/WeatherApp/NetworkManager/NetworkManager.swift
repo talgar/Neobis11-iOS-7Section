@@ -9,7 +9,12 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-let currentWeatherURL = "http://api.openweathermap.org/data/2.5/weather?lat=42.874722&lon=74.612222&APPID=3331e666239ea2e7435b26c22893307c"
+
+private let cityName = "Rust"
+
+let currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=0f6112b1d663b03202ffabe9788c51ef"
+
+
 
 typealias DownloadComplete = () -> ()
 
@@ -21,7 +26,7 @@ class NetworkManager {
     
     func loadForecastWeather( completion:  @escaping (ForecastWeather)->()){
         
-        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?lat=42.874722&lon=74.612222&APPID=079587841f01c6b277a82c1c7788a6c3"
+        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(cityName)&appid=0f6112b1d663b03202ffabe9788c51ef"
         
         guard let url = URL(string: jsonUrlString) else { return }
         

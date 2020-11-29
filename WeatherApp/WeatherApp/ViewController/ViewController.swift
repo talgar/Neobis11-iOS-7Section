@@ -17,6 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var nightList: [List] = []
     var dt: Int = 0
     
+    
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -32,7 +33,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.dataSource = self
         loadCurrentWeather()
         loadForecastWeather()
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationController?.navigationBar.barTintColor = .clear
     }
     
     
@@ -54,7 +61,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func updateCurrentWeather() {
         cityLabel.text = currentWeather.city
-        tempLabel.text = "\(Int(currentWeather.temp))°"
+        tempLabel.text = "\(Int(currentWeather.temp))°C"
         descriptionLabel.text = currentWeather.description
         dateLabel.text = currentWeather.date
 

@@ -17,6 +17,7 @@
 		846863D82558657C002F6A48 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846863D72558657C002F6A48 /* Model.swift */; };
 		846863E7255867EA002F6A48 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846863E6255867EA002F6A48 /* NetworkManager.swift */; };
 		846863EE2558ACE7002F6A48 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846863ED2558ACE7002F6A48 /* Extensions.swift */; };
+		84817A0225734AEF006F0AAB /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84817A0125734AEF006F0AAB /* SearchVC.swift */; };
 		84EE3A1C2559FC1000FD8163 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84EE3A1B2559FC1000FD8163 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		846863D72558657C002F6A48 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		846863E6255867EA002F6A48 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		846863ED2558ACE7002F6A48 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		84817A0125734AEF006F0AAB /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		84EE3A1B2559FC1000FD8163 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 			children = (
 				842424B32556C1E000FEA14F /* ViewController.swift */,
 				845EDC99255B301D00A6CAAF /* ForecastWeatherCollectionCell.swift */,
+				84817A0125734AEF006F0AAB /* SearchVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84817A0225734AEF006F0AAB /* SearchVC.swift in Sources */,
 				842424B42556C1E000FEA14F /* ViewController.swift in Sources */,
 				845EDC9A255B301D00A6CAAF /* ForecastWeatherCollectionCell.swift in Sources */,
 				846863E7255867EA002F6A48 /* NetworkManager.swift in Sources */,

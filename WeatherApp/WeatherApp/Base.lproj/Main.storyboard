@@ -1,17 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vkx-54-ZEu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search-->
+        <scene sceneID="Dra-4a-aBM">
+            <objects>
+                <viewController id="Vou-w0-Xb8" customClass="SearchVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mH2-oX-OM4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catalinaN" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-St-Mvg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQ1-8v-RQT" userLabel="SearchBTN">
+                                <rect key="frame" x="32" y="205" width="350" height="40"/>
+                                <color key="backgroundColor" red="0.096838884055614471" green="0.44855743646621704" blue="0.94337910413742065" alpha="0.57683335866359686" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="searchBtn:" destination="Vou-w0-Xb8" eventType="touchUpInside" id="QbP-Eg-9gV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fh-np-rtA">
+                                <rect key="frame" x="32" y="148" width="350" height="37"/>
+                                <color key="backgroundColor" red="0.95872836907454384" green="1" blue="0.99539478320726194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="systemBlueColor"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-Yi-zG2" userLabel="icon">
+                                <rect key="frame" x="39" y="155" width="25" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="UaO-NH-aXE"/>
+                                    <constraint firstAttribute="width" constant="25" id="nHr-bp-gIi"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SEd-Y3-siu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SEd-Y3-siu" firstAttribute="trailing" secondItem="0fh-np-rtA" secondAttribute="trailing" constant="32" id="3mY-nI-fPO"/>
+                            <constraint firstItem="SEd-Y3-siu" firstAttribute="bottom" secondItem="zQ1-8v-RQT" secondAttribute="bottom" constant="16" id="6KC-WE-1dp"/>
+                            <constraint firstItem="mLr-St-Mvg" firstAttribute="top" secondItem="mH2-oX-OM4" secondAttribute="top" id="6bv-xI-cfM"/>
+                            <constraint firstItem="0fh-np-rtA" firstAttribute="leading" secondItem="RF0-Yi-zG2" secondAttribute="trailing" constant="-32" id="7gP-al-neZ"/>
+                            <constraint firstAttribute="trailing" secondItem="mLr-St-Mvg" secondAttribute="trailing" id="CPA-z9-1rn"/>
+                            <constraint firstItem="mLr-St-Mvg" firstAttribute="trailing" secondItem="SEd-Y3-siu" secondAttribute="trailing" id="EXe-sH-VtN"/>
+                            <constraint firstItem="zQ1-8v-RQT" firstAttribute="top" secondItem="0fh-np-rtA" secondAttribute="bottom" constant="20" id="F2n-LM-fDg"/>
+                            <constraint firstItem="RF0-Yi-zG2" firstAttribute="centerY" secondItem="0fh-np-rtA" secondAttribute="centerY" id="KvN-gd-wZ5"/>
+                            <constraint firstItem="0fh-np-rtA" firstAttribute="top" secondItem="SEd-Y3-siu" secondAttribute="top" constant="240" id="Org-wY-Fxu"/>
+                            <constraint firstItem="SEd-Y3-siu" firstAttribute="trailing" secondItem="zQ1-8v-RQT" secondAttribute="trailing" constant="80" id="QAo-cE-vCs"/>
+                            <constraint firstItem="zQ1-8v-RQT" firstAttribute="top" secondItem="0fh-np-rtA" secondAttribute="bottom" constant="20" id="QsG-pE-lG6"/>
+                            <constraint firstItem="SEd-Y3-siu" firstAttribute="trailing" secondItem="zQ1-8v-RQT" secondAttribute="trailing" constant="32" id="XJ2-0s-L5F"/>
+                            <constraint firstItem="0fh-np-rtA" firstAttribute="leading" secondItem="SEd-Y3-siu" secondAttribute="leading" constant="80" id="XWL-LK-3VX"/>
+                            <constraint firstItem="RF0-Yi-zG2" firstAttribute="centerY" secondItem="0fh-np-rtA" secondAttribute="centerY" id="bsw-gg-gab"/>
+                            <constraint firstItem="mLr-St-Mvg" firstAttribute="top" secondItem="mH2-oX-OM4" secondAttribute="top" id="eJw-K2-YwU"/>
+                            <constraint firstItem="0fh-np-rtA" firstAttribute="top" secondItem="SEd-Y3-siu" secondAttribute="top" constant="60" id="fv6-c1-pG4"/>
+                            <constraint firstItem="zQ1-8v-RQT" firstAttribute="leading" secondItem="SEd-Y3-siu" secondAttribute="leading" constant="80" id="i3U-7T-64C"/>
+                            <constraint firstItem="SEd-Y3-siu" firstAttribute="trailing" secondItem="0fh-np-rtA" secondAttribute="trailing" constant="80" id="l1t-Ee-QNg"/>
+                            <constraint firstItem="mLr-St-Mvg" firstAttribute="leading" secondItem="mH2-oX-OM4" secondAttribute="leading" id="l2R-ca-BBb"/>
+                            <constraint firstAttribute="bottom" secondItem="mLr-St-Mvg" secondAttribute="bottom" id="nbh-dZ-lSs"/>
+                            <constraint firstItem="zQ1-8v-RQT" firstAttribute="leading" secondItem="SEd-Y3-siu" secondAttribute="leading" constant="32" id="nmC-H0-pE8"/>
+                            <constraint firstItem="0fh-np-rtA" firstAttribute="leading" secondItem="SEd-Y3-siu" secondAttribute="leading" constant="32" id="qyB-Sy-VyH"/>
+                            <constraint firstItem="0fh-np-rtA" firstAttribute="leading" secondItem="RF0-Yi-zG2" secondAttribute="trailing" constant="-40" id="sbY-cK-r7f"/>
+                            <constraint firstItem="mLr-St-Mvg" firstAttribute="leading" secondItem="SEd-Y3-siu" secondAttribute="leading" id="ure-jq-BRT"/>
+                            <constraint firstAttribute="bottom" secondItem="mLr-St-Mvg" secondAttribute="bottom" id="w4H-Jy-KAI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6bv-xI-cfM"/>
+                                <exclude reference="CPA-z9-1rn"/>
+                                <exclude reference="EXe-sH-VtN"/>
+                                <exclude reference="eJw-K2-YwU"/>
+                                <exclude reference="l2R-ca-BBb"/>
+                                <exclude reference="nbh-dZ-lSs"/>
+                                <exclude reference="ure-jq-BRT"/>
+                                <exclude reference="w4H-Jy-KAI"/>
+                                <exclude reference="3mY-nI-fPO"/>
+                                <exclude reference="6KC-WE-1dp"/>
+                                <exclude reference="QAo-cE-vCs"/>
+                                <exclude reference="XJ2-0s-L5F"/>
+                                <exclude reference="l1t-Ee-QNg"/>
+                                <exclude reference="7gP-al-neZ"/>
+                                <exclude reference="Org-wY-Fxu"/>
+                                <exclude reference="XWL-LK-3VX"/>
+                                <exclude reference="fv6-c1-pG4"/>
+                                <exclude reference="qyB-Sy-VyH"/>
+                                <exclude reference="sbY-cK-r7f"/>
+                                <exclude reference="KvN-gd-wZ5"/>
+                                <exclude reference="bsw-gg-gab"/>
+                                <exclude reference="F2n-LM-fDg"/>
+                                <exclude reference="QsG-pE-lG6"/>
+                                <exclude reference="i3U-7T-64C"/>
+                                <exclude reference="nmC-H0-pE8"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="CPA-z9-1rn"/>
+                                <include reference="eJw-K2-YwU"/>
+                                <include reference="l2R-ca-BBb"/>
+                                <include reference="nbh-dZ-lSs"/>
+                                <include reference="6KC-WE-1dp"/>
+                                <include reference="QAo-cE-vCs"/>
+                                <include reference="l1t-Ee-QNg"/>
+                                <exclude reference="Org-wY-Fxu"/>
+                                <include reference="XWL-LK-3VX"/>
+                                <include reference="sbY-cK-r7f"/>
+                                <include reference="KvN-gd-wZ5"/>
+                                <include reference="QsG-pE-lG6"/>
+                                <include reference="i3U-7T-64C"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="6bv-xI-cfM"/>
+                                <include reference="EXe-sH-VtN"/>
+                                <include reference="ure-jq-BRT"/>
+                                <include reference="w4H-Jy-KAI"/>
+                                <include reference="3mY-nI-fPO"/>
+                                <include reference="XJ2-0s-L5F"/>
+                                <include reference="7gP-al-neZ"/>
+                                <include reference="fv6-c1-pG4"/>
+                                <include reference="qyB-Sy-VyH"/>
+                                <include reference="bsw-gg-gab"/>
+                                <include reference="F2n-LM-fDg"/>
+                                <include reference="nmC-H0-pE8"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="6zw-2v-BsT"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="mLr-St-Mvg" id="qTO-s0-m2t"/>
+                        <outlet property="cityLabel" destination="0fh-np-rtA" id="sWV-P1-pwx"/>
+                        <outlet property="searchBtn" destination="zQ1-8v-RQT" id="h30-nn-peo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rii-0n-vsP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.25" y="39.130434782608695"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Weather" id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,6 +310,8 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="yss-pg-Ct3"/>
+                    <navigationItem key="navigationItem" id="hi2-fi-Ur3"/>
                     <connections>
                         <outlet property="backgroundView" destination="feP-hA-YU6" id="4nY-gQ-eJF"/>
                         <outlet property="cityLabel" destination="DaT-6G-bbr" id="083-YJ-lHQ"/>
@@ -181,11 +324,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="42.857142857142854"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="42.857142857142854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="42d-8c-P74">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PzF-Zr-axf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vkx-54-ZEu" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6QX-ZS-cXJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.034846077126860359" blue="0.091271217423255946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vou-w0-Xb8" kind="relationship" relationship="rootViewController" id="I1l-4y-f8i"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-778.26086956521749" y="40.178571428571423"/>
         </scene>
     </scenes>
     <resources>
         <image name="50n" width="512" height="512"/>
         <image name="catalinaD" width="512" height="512"/>
+        <image name="catalinaN" width="512" height="512"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
