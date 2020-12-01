@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Vkx-54-ZEu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WqQ-sd-S1H">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -9,29 +9,91 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--LocationVC-->
+        <scene sceneID="zZw-yo-bzJ">
+            <objects>
+                <tableViewController id="Z2E-DM-T8Q" customClass="LocationVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cYf-eQ-uKe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.26381702585564204" green="0.67578644156828704" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" textLabel="6UQ-AC-QB0" rowHeight="51" style="IBUITableViewCellStyleDefault" id="ZeE-bv-Xoq" customClass="TableViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="55.5" width="374" height="51"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZeE-bv-Xoq" id="mce-E2-ikF">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="51"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6UQ-AC-QB0">
+                                            <rect key="frame" x="20" y="0.0" width="334" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10d" translatesAutoresizingMaskIntoConstraints="NO" id="Xe6-GZ-5U3">
+                                            <rect key="frame" x="250" y="13" width="45" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16 °C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efv-Su-veG">
+                                            <rect key="frame" x="311" y="14.5" width="53" height="27"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.26381702585564204" green="0.67578644156828704" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="locationItem" destination="Xe6-GZ-5U3" id="6qx-K2-Yda"/>
+                                    <outlet property="locationTemp" destination="Efv-Su-veG" id="EuN-xG-yYb"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="82s-55-kfs"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Z2E-DM-T8Q" id="ptV-Mn-FbZ"/>
+                            <outlet property="delegate" destination="Z2E-DM-T8Q" id="JdW-jw-qWY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="qtE-Tz-Zyy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HAu-zj-Z7v">
+                            <connections>
+                                <segue destination="Vou-w0-Xb8" kind="show" id="wVT-JE-aeC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-uG-M3Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="688.40579710144937" y="38.839285714285715"/>
+        </scene>
         <!--Search-->
         <scene sceneID="Dra-4a-aBM">
             <objects>
-                <viewController id="Vou-w0-Xb8" customClass="SearchVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vou-w0-Xb8" customClass="AddLocationsVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mH2-oX-OM4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catalinaN" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-St-Mvg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catalinaN" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-St-Mvg" userLabel="backView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQ1-8v-RQT" userLabel="SearchBTN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQ1-8v-RQT" userLabel="Add Location">
                                 <rect key="frame" x="32" y="205" width="350" height="40"/>
                                 <color key="backgroundColor" red="0.096838884055614471" green="0.44855743646621704" blue="0.94337910413742065" alpha="0.57683335866359686" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
-                                <state key="normal" title="Search">
+                                <state key="normal" title="Add location">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="searchBtn:" destination="Vou-w0-Xb8" eventType="touchUpInside" id="QbP-Eg-9gV"/>
+                                    <action selector="addLocationAct:" destination="Vou-w0-Xb8" eventType="touchUpInside" id="Xlv-Oo-NTd"/>
+                                    <segue destination="WqQ-sd-S1H" kind="showDetail" animates="NO" id="Y8e-6a-dOa"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fh-np-rtA">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fh-np-rtA" userLabel="Location Label">
                                 <rect key="frame" x="32" y="148" width="350" height="37"/>
                                 <color key="backgroundColor" red="0.95872836907454384" green="1" blue="0.99539478320726194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
@@ -77,6 +139,11 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="3mY-nI-fPO"/>
+                                <exclude reference="6KC-WE-1dp"/>
+                                <exclude reference="QAo-cE-vCs"/>
+                                <exclude reference="XJ2-0s-L5F"/>
+                                <exclude reference="l1t-Ee-QNg"/>
                                 <exclude reference="6bv-xI-cfM"/>
                                 <exclude reference="CPA-z9-1rn"/>
                                 <exclude reference="EXe-sH-VtN"/>
@@ -85,11 +152,6 @@
                                 <exclude reference="nbh-dZ-lSs"/>
                                 <exclude reference="ure-jq-BRT"/>
                                 <exclude reference="w4H-Jy-KAI"/>
-                                <exclude reference="3mY-nI-fPO"/>
-                                <exclude reference="6KC-WE-1dp"/>
-                                <exclude reference="QAo-cE-vCs"/>
-                                <exclude reference="XJ2-0s-L5F"/>
-                                <exclude reference="l1t-Ee-QNg"/>
                                 <exclude reference="7gP-al-neZ"/>
                                 <exclude reference="Org-wY-Fxu"/>
                                 <exclude reference="XWL-LK-3VX"/>
@@ -106,13 +168,13 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <include reference="6KC-WE-1dp"/>
+                                <include reference="QAo-cE-vCs"/>
+                                <include reference="l1t-Ee-QNg"/>
                                 <include reference="CPA-z9-1rn"/>
                                 <include reference="eJw-K2-YwU"/>
                                 <include reference="l2R-ca-BBb"/>
                                 <include reference="nbh-dZ-lSs"/>
-                                <include reference="6KC-WE-1dp"/>
-                                <include reference="QAo-cE-vCs"/>
-                                <include reference="l1t-Ee-QNg"/>
                                 <exclude reference="Org-wY-Fxu"/>
                                 <include reference="XWL-LK-3VX"/>
                                 <include reference="sbY-cK-r7f"/>
@@ -123,12 +185,12 @@
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
+                                <include reference="3mY-nI-fPO"/>
+                                <include reference="XJ2-0s-L5F"/>
                                 <include reference="6bv-xI-cfM"/>
                                 <include reference="EXe-sH-VtN"/>
                                 <include reference="ure-jq-BRT"/>
                                 <include reference="w4H-Jy-KAI"/>
-                                <include reference="3mY-nI-fPO"/>
-                                <include reference="XJ2-0s-L5F"/>
                                 <include reference="7gP-al-neZ"/>
                                 <include reference="fv6-c1-pG4"/>
                                 <include reference="qyB-Sy-VyH"/>
@@ -140,19 +202,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="6zw-2v-BsT"/>
                     <connections>
-                        <outlet property="backgroundView" destination="mLr-St-Mvg" id="qTO-s0-m2t"/>
-                        <outlet property="cityLabel" destination="0fh-np-rtA" id="sWV-P1-pwx"/>
-                        <outlet property="searchBtn" destination="zQ1-8v-RQT" id="h30-nn-peo"/>
+                        <outlet property="addLocationBtn" destination="zQ1-8v-RQT" id="QgH-gJ-BTA"/>
+                        <outlet property="locationLabel" destination="0fh-np-rtA" id="Oob-0E-Ory"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rii-0n-vsP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.25" y="39.130434782608695"/>
+            <point key="canvasLocation" x="1349" y="-652"/>
         </scene>
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Weather" id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,20 +223,20 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pg-33-5iI" userLabel="iconView">
-                                <rect key="frame" x="304" y="68" width="90" height="90"/>
+                                <rect key="frame" x="304" y="112" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="1qY-We-iVZ"/>
                                     <constraint firstAttribute="width" constant="90" id="uRP-Aa-L6F"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DescripLb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRx-9A-emL">
-                                <rect key="frame" x="304" y="174" width="90" height="28"/>
+                                <rect key="frame" x="304" y="218" width="90" height="28"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaT-6G-bbr">
-                                <rect key="frame" x="20" y="84" width="186" height="31"/>
+                                <rect key="frame" x="20" y="128" width="186" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="186" id="UrE-rf-9ch"/>
                                 </constraints>
@@ -184,13 +245,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bid-ZP-nRO" userLabel="Date Label">
-                                <rect key="frame" x="20" y="123" width="186" height="27.5"/>
+                                <rect key="frame" x="20" y="167" width="186" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlD-gf-LTg">
-                                <rect key="frame" x="20" y="174" width="50.5" height="62"/>
+                                <rect key="frame" x="20" y="218" width="50.5" height="62"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -324,32 +385,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="42.857142857142854"/>
+            <point key="canvasLocation" x="1957.9710144927537" y="42.857142857142854"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="42d-8c-P74">
+        <scene sceneID="vH7-00-JHs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PzF-Zr-axf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vkx-54-ZEu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WqQ-sd-S1H" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6QX-ZS-cXJ">
+                    <navigationItem key="navigationItem" id="xyd-Um-1JC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U4n-ib-VeS">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.034846077126860359" blue="0.091271217423255946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Vou-w0-Xb8" kind="relationship" relationship="rootViewController" id="I1l-4y-f8i"/>
+                        <segue destination="Z2E-DM-T8Q" kind="relationship" relationship="rootViewController" id="7Ju-yi-iT2"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SrY-MY-2Hz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-778.26086956521749" y="40.178571428571423"/>
+            <point key="canvasLocation" x="-220.28985507246378" y="38.839285714285715"/>
         </scene>
     </scenes>
     <resources>
+        <image name="10d" width="512" height="512"/>
         <image name="50n" width="512" height="512"/>
         <image name="catalinaD" width="512" height="512"/>
         <image name="catalinaN" width="512" height="512"/>

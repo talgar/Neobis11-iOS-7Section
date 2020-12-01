@@ -10,18 +10,16 @@ import Alamofire
 import SwiftyJSON
 
 
-private let cityName = "Rust"
+var cityName = "Catalina"
 
 let currentWeatherURL = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=0f6112b1d663b03202ffabe9788c51ef"
 
-
-
 typealias DownloadComplete = () -> ()
-
 
 //MARK: download func for ForecastWeather 
 
 class NetworkManager {
+        
     static let shared = NetworkManager()
     
     func loadForecastWeather( completion:  @escaping (ForecastWeather)->()){
@@ -49,3 +47,4 @@ class NetworkManager {
     }
     
 }
+

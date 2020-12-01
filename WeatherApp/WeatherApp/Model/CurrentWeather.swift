@@ -75,23 +75,4 @@ class CurrentWeather {
 }
 
 
-struct ForecastWeather : Decodable {
-    var list : [List]?
-}
 
-struct List: Decodable {
-    var dt: Int?
-    var main: Main?
-    var weather: [Weather]?
-    var dt_txt: String?
-}
-
-struct Main: Decodable {
-    var temp: Double?
-}
-
-struct Weather: Decodable {
-    var main: String?
-    var description: String?
-    var icon: String?
-}
