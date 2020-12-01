@@ -9,9 +9,8 @@ import UIKit
 
 class LocationVC: UITableViewController {
 
-    var currentWeather : CurrentWeather!
     
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         loadData()
@@ -21,8 +20,7 @@ class LocationVC: UITableViewController {
         self.navigationController?.navigationBar.topItem?.title = "Locations"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
     }
-    
-    
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,13 +35,11 @@ class LocationVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let location = locationList[indexPath.row]
         
-        cell.textLabel?.text = (location.name)
-//        cell.locationItem.image = UIImage(named: currentWeather.icon)
-//        cell.locationTemp.text = "\(Int(currentWeather.temp))°C"
+        cell.textLabel!.text = location.name
         
         return cell
     }

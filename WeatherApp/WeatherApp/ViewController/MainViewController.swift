@@ -10,13 +10,12 @@ import Alamofire
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var currentWeather : CurrentWeather!
+    var currentWeather : NetworkManager!
     var dayOrNight = ""
     
     var dayList: [List] = []
     var nightList: [List] = []
     var dt: Int = 0
-    
     
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
@@ -45,7 +44,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //MARK: load funcs
     
     func loadCurrentWeather() {
-        currentWeather = CurrentWeather()
+        currentWeather = NetworkManager()
         currentWeather.downloadCuerrentWeather {
             self.updateCurrentWeather()
         }

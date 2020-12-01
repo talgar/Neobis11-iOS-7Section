@@ -16,6 +16,7 @@ class AddLocationsVC: UIViewController {
         super.viewDidLoad()
         addLocationBtn.layer.cornerRadius = 6
         locationLabel.becomeFirstResponder()
+        //NetworkManager.shared.cityName(cityName: locationLabel.text!)
     }
         
     @IBAction func addLocationAct(_ sender: Any) {
