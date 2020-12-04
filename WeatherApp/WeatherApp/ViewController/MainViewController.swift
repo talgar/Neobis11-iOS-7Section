@@ -37,45 +37,25 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //        self.navigationController?.navigationBar.tintColor = .white
 //        self.navigationController?.navigationBar.barTintColor = .clear
 //    }
-    
-    
-    //MARK: load funcs
-    
-//    func loadCurrentWeather() {
-//        currentWeather = NetworkManager()
-//        currentWeather.downloadCuerrentWeather(cityName: ) {
-//            self.updateCurrentWeather()
-//        }
-//    }
-//
-//    func loadForecastWeather() {
-//        NetworkManager.shared.loadForecastWeather(cityName: city, completion: updateForecastWeather)
-//    }
 
-    
-    //MARK: Update funcs
     
     func updateCurrentWeather() {
-        if currentWeather.city == nil {
-            cityLabel.isHidden = true
-            
-        } else {
-            cityLabel.text = currentWeather.city
-            tempLabel.text = "\(Int(currentWeather.temp))°C"
-            descriptionLabel.text = currentWeather.description
-            dateLabel.text = currentWeather.date
-
-            self.dayOrNight = currentWeather.icon
-
-            if dayOrNight.last! == "d" {
-                dayOrNight = "d"
-                self.dayView()
-            } else {
-                dayOrNight = "n"
-                self.nightView()
-            }
-        }
-    
+        
+//        cityLabel.text = currentWeather.modelCurrent.current
+//        tempLabel.text = "\(Int(currentWeather.modelCurrent.current.))°C"
+//            descriptionLabel.text = currentWeather.description
+//            dateLabel.text = currentWeather.date
+//
+//            self.dayOrNight = currentWeather.icon
+//
+//            if dayOrNight.last! == "d" {
+//                dayOrNight = "d"
+//                self.dayView()
+//            } else {
+//                dayOrNight = "n"
+//                self.nightView()
+//            }
+//
     }
     
     func updateForecastWeather(info: ForecastWeather) {
@@ -119,16 +99,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     //MARK: funcs for backView and weather icon
-    
-    func dayView(){
-        backgroundView.image = UIImage(named: "catalinaD")
-        iconView.image = UIImage(named:currentWeather.icon)
-    }
-    
-    func nightView(){
-        backgroundView.image = UIImage(named: "catalinaN")
-        iconView.image = UIImage(named:currentWeather.icon)
-    }
+//    
+//    func dayView(){
+//        backgroundView.image = UIImage(named: "catalinaD")
+//        iconView.image = UIImage(named:currentWeather.icon)
+//    }
+//    
+//    func nightView(){
+//        backgroundView.image = UIImage(named: "catalinaN")
+//        iconView.image = UIImage(named:currentWeather.icon)
+//    }
 }
 
 

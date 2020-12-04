@@ -6,22 +6,24 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
 
-struct Model {
+struct ModelForecast {
     var forecats = [ForecastWeather]()
+}
+
+struct ModelCurrent {
+    var current = [CurrentWeather]()
 }
 
 struct ForecastWeather : Codable {
     var list : [List]?
 }
 
-struct CurrentWeather: Codable {
+struct CurrentWeather : Codable {
     var weather:[Weather]?
     var main: Main?
     var dt: Int?
-    var city : City
+    var city : City?
 }
 
 struct List: Codable {
@@ -41,7 +43,7 @@ struct Weather: Codable {
     var icon: String?
 }
 
-struct City: Decodable {
+struct City: Codable {
     var name: String?
 }
 

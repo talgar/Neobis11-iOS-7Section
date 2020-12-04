@@ -21,58 +21,22 @@ class LocationVC: UITableViewController {
     
     @IBAction func unwinFromAddLocation(segue: UIStoryboardSegue) {
         let source = segue.source as! AddLocationsVC
-        //print(source.locationName)
-        network.downloadCuerrentWeather(cityName: source.locationName) {
+        
+        network.loadCurrentWeather(cityName: source.locationName) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            print("DONE \(NetworkManager.shared.description)")
+            print("DONE \(source.locationName)")
+            print("DONE \(self.network.modelCurrent.current)")
         }
-        loadForecastWeather(cityName: source.locationName) {
+        network.loadForecastWeather(cityName: source.locationName) {
             DispatchQueue.main.async {
                 print("DONE \(source.locationName)")
-                print("SHOW HERE GETTING JSON\(self.network.model.forecats)")
+                print("SHOW HERE GETTING JSON\(self.network.modelForecast.forecats)")
             }
         }
     }
     
-    var model = Model()
-    
-    func loadForecastWeather(cityName: String, completed: @escaping () -> ()) {
-
-        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(String(describing: cityName))&appid=0f6112b1d663b03202ffabe9788c51ef"
-
-        guard let url = URL(string: jsonUrlString) else { return }
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error)
-            }
-            do {
-                let result = try JSONDecoder().decode(ForecastWeather.self, from: data ?? Data())
-                
-                self.model.forecats.append(result)
-                
-            } catch {
-                print("Error")
-            }
-            
-            
-        }.resume()
-//        Alamofire.request(jsonUrlString).responseJSON { (response) in
-//            let result = response.result
-//
-//            var forecastArray : [ForecastWeather] = []
-//
-//            if result.isSuccess {
-//                completed(forecastArray)
-//            } else {
-//                completed(forecastArray)
-//                print("No forecast")
-//            }
-//
-        }
 
     
     override func viewWillAppear(_ animated: Bool) {
