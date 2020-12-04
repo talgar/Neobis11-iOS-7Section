@@ -77,7 +77,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addLocationAct:" destination="Vou-w0-Xb8" eventType="touchUpInside" id="Xlv-Oo-NTd"/>
-                                    <segue destination="WqQ-sd-S1H" kind="showDetail" animates="NO" id="OCJ-nX-H9H"/>
+                                    <segue destination="kDM-xM-nwl" kind="unwind" unwindAction="unwinFromAddLocationWithSegue:" id="lJT-q0-kFt"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fh-np-rtA" userLabel="Location Label">
@@ -194,8 +194,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rii-0n-vsP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kDM-xM-nwl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1106" y="-704"/>
+            <point key="canvasLocation" x="1000" y="-741"/>
         </scene>
         <!--Item-->
         <scene sceneID="tne-QT-ifu">

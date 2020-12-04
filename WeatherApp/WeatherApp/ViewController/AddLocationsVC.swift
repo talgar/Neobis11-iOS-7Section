@@ -12,12 +12,22 @@ class AddLocationsVC: UIViewController {
     @IBOutlet weak var locationLabel: UITextField!
     @IBOutlet weak var addLocationBtn: UIButton!
     
+    var locationName = ""
+    
+    //ОТПРАВЛЯЕШЬ ДАННЫЕ ОТСЮДА
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        locationName = locationLabel.text!
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         addLocationBtn.layer.cornerRadius = 6
         locationLabel.becomeFirstResponder()
-        //NetworkManager.shared.cityName(cityName: locationLabel.text!)
+        
     }
+    
+
         
     @IBAction func addLocationAct(_ sender: Any) {
        

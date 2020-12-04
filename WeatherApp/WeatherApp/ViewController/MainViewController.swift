@@ -30,8 +30,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        loadCurrentWeather()
-        loadForecastWeather()
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -43,35 +41,41 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     //MARK: load funcs
     
-    func loadCurrentWeather() {
-        currentWeather = NetworkManager()
-        currentWeather.downloadCuerrentWeather {
-            self.updateCurrentWeather()
-        }
-    }
-    
-    func loadForecastWeather() {
-        NetworkManager.shared.loadForecastWeather(completion: updateForecastWeather)
-    }
-    
+//    func loadCurrentWeather() {
+//        currentWeather = NetworkManager()
+//        currentWeather.downloadCuerrentWeather(cityName: ) {
+//            self.updateCurrentWeather()
+//        }
+//    }
+//
+//    func loadForecastWeather() {
+//        NetworkManager.shared.loadForecastWeather(cityName: city, completion: updateForecastWeather)
+//    }
+
     
     //MARK: Update funcs
     
     func updateCurrentWeather() {
-        cityLabel.text = currentWeather.city
-        tempLabel.text = "\(Int(currentWeather.temp))°C"
-        descriptionLabel.text = currentWeather.description
-        dateLabel.text = currentWeather.date
-
-        self.dayOrNight = currentWeather.icon
-
-        if dayOrNight.last! == "d" {
-            dayOrNight = "d"
-            self.dayView()
+        if currentWeather.city == nil {
+            cityLabel.isHidden = true
+            
         } else {
-            dayOrNight = "n"
-            self.nightView()
+            cityLabel.text = currentWeather.city
+            tempLabel.text = "\(Int(currentWeather.temp))°C"
+            descriptionLabel.text = currentWeather.description
+            dateLabel.text = currentWeather.date
+
+            self.dayOrNight = currentWeather.icon
+
+            if dayOrNight.last! == "d" {
+                dayOrNight = "d"
+                self.dayView()
+            } else {
+                dayOrNight = "n"
+                self.nightView()
+            }
         }
+    
     }
     
     func updateForecastWeather(info: ForecastWeather) {
