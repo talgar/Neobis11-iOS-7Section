@@ -16,7 +16,7 @@ class LocationVC: UITableViewController {
             
         tableView.tableFooterView = UIView()
         loadData()
-           
+            tableView.reloadData()
     }
     
     @IBAction func unwinFromAddLocation(segue: UIStoryboardSegue) {
@@ -32,13 +32,12 @@ class LocationVC: UITableViewController {
         network.loadForecastWeather(cityName: source.locationName) {
             DispatchQueue.main.async {
                 print("DONE \(source.locationName)")
-                print("SHOW HERE GETTING JSON\(self.network.modelForecast.forecats)")
+                print("SHOW HERE GETTING JSON\(self.network.modelForecast.forecast)")
             }
         }
     }
     
 
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = "Locations"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
@@ -84,18 +83,5 @@ class LocationVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-       
-        if tableView.isEditing {
-            return .none
-        } else {
-             return .delete
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
     }
 }

@@ -11,8 +11,8 @@ import SwiftyJSON
 
 class NetworkManager {
     
-    var modelCurrent = ModelCurrent()
-    var modelForecast = ModelForecast()
+    var modelCurrent = CurrentWeather()
+    var modelForecast = ForecastWeather()
     
     func loadCurrentWeather(cityName: String, completed: @escaping () -> ()) {
         let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=\(String(describing: cityName))&appid=0f6112b1d663b03202ffabe9788c51ef"
@@ -25,7 +25,7 @@ class NetworkManager {
                 print(error)
             }
             do {
-                let result = try JSONDecoder().decode(CurrentWeather.self, from: data ?? Data())
+                let result = try JSONDecoder().decode(CurrentInfo.self, from: data ?? Data())
                 
                 self.modelCurrent.current.append(result)
             } catch {
@@ -46,9 +46,9 @@ class NetworkManager {
                 print(error)
             }
             do {
-                let result = try JSONDecoder().decode(ForecastWeather.self, from: data ?? Data())
+                let result = try JSONDecoder().decode(ForecastInfo.self, from: data ?? Data())
                 
-                self.modelForecast.forecats.append(result)
+                self.modelForecast.forecast.append(result)
                 
             } catch {
                 print("Error")

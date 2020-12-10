@@ -58,19 +58,19 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 //
     }
     
-    func updateForecastWeather(info: ForecastWeather) {
-        
-        self.dt = info.list![0].dt!
-        
-        for item in info.list! {
-            if item.dt_txt!.suffix(8) == "15:00:00" {
-                self.dayList.append(item)
-            } else if item.dt_txt!.suffix(8) == "03:00:00" {
-                self.nightList.append(item)
-            }
-        }
-        self.collectionView.reloadData()
-    }
+//    func updateForecastWeather(info: ForecastWeather) {
+//        
+//        self.dt = info.list![0].dt!
+//        
+//        for item in info.list! {
+//            if item.dt_txt!.suffix(8) == "15:00:00" {
+//                self.dayList.append(item)
+//            } else if item.dt_txt!.suffix(8) == "03:00:00" {
+//                self.nightList.append(item)
+//            }
+//        }
+//        self.collectionView.reloadData()
+//    }
     
     //MARK: CollectionView for ForecastWeather
     
@@ -86,8 +86,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         cell.layer.cornerRadius = 16
-        cell.dayTempLabel.text = dayList[indexPath.row].main!.temp!.convertToCelsius()
-        cell.nightTempLabel.text = nightList[indexPath.row].main!.temp!.convertToCelsius()
+//        cell.dayTempLabel.text = dayList[indexPath.row].main!.temp!.convertToCelsius()
+//        cell.nightTempLabel.text = nightList[indexPath.row].main!.temp!.convertToCelsius()
         cell.weekDayLabel.text = dt.convertToWD(indexPath.row)
         cell.forecastWImageView.image = UIImage(named:dayList[indexPath.row].weather![0].icon!)
         return cell
