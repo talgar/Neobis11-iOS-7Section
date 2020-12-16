@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WqQ-sd-S1H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WqQ-sd-S1H">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,7 +14,7 @@
             <objects>
                 <tableViewController id="Z2E-DM-T8Q" customClass="LocationVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="cYf-eQ-uKe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.26381702585564204" green="0.67578644156828704" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -35,9 +35,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.26381702585564204" green="0.67578644156828704" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="82s-55-kfs"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -52,24 +49,27 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="MainViewController" id="OM0-Lw-X1O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIB-uG-M3Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688.40579710144937" y="38.839285714285715"/>
+            <point key="canvasLocation" x="232" y="39"/>
         </scene>
         <!--Search-->
         <scene sceneID="Dra-4a-aBM">
             <objects>
                 <viewController id="Vou-w0-Xb8" customClass="AddLocationsVC" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mH2-oX-OM4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catalinaN" translatesAutoresizingMaskIntoConstraints="NO" id="mLr-St-Mvg" userLabel="backView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zQ1-8v-RQT" userLabel="Add Location">
-                                <rect key="frame" x="32" y="205" width="350" height="40"/>
+                                <rect key="frame" x="32" y="117" width="350" height="40"/>
                                 <color key="backgroundColor" red="0.096838884055614471" green="0.44855743646621704" blue="0.94337910413742065" alpha="0.57683335866359686" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Add location">
@@ -77,18 +77,18 @@
                                 </state>
                                 <connections>
                                     <action selector="addLocationAct:" destination="Vou-w0-Xb8" eventType="touchUpInside" id="Xlv-Oo-NTd"/>
-                                    <segue destination="SVd-WO-iik" kind="unwind" unwindAction="unwinFromAddLocationWithSegue:" id="Nqm-XZ-OOL"/>
+                                    <segue destination="Z2E-DM-T8Q" kind="show" animates="NO" id="FI2-9q-NfL"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter location" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0fh-np-rtA" userLabel="Location Label">
-                                <rect key="frame" x="32" y="148" width="350" height="37"/>
+                                <rect key="frame" x="32" y="60" width="350" height="37"/>
                                 <color key="backgroundColor" red="0.95872836907454384" green="1" blue="0.99539478320726194" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-Yi-zG2" userLabel="icon">
-                                <rect key="frame" x="39" y="155" width="25" height="23"/>
+                                <rect key="frame" x="39" y="67" width="25" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="UaO-NH-aXE"/>
                                     <constraint firstAttribute="width" constant="25" id="nHr-bp-gIi"/>
@@ -194,7 +194,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rii-0n-vsP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="SVd-WO-iik" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1000" y="-741"/>
         </scene>
@@ -203,28 +202,28 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="catalinaD" translatesAutoresizingMaskIntoConstraints="NO" id="feP-hA-YU6" userLabel="backgroundView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Pg-33-5iI" userLabel="iconView">
-                                <rect key="frame" x="304" y="112" width="90" height="90"/>
+                                <rect key="frame" x="304" y="24" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="1qY-We-iVZ"/>
                                     <constraint firstAttribute="width" constant="90" id="uRP-Aa-L6F"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DescripLb" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRx-9A-emL">
-                                <rect key="frame" x="304" y="218" width="90" height="28"/>
+                                <rect key="frame" x="304" y="130" width="90" height="28"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CityLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaT-6G-bbr">
-                                <rect key="frame" x="20" y="128" width="186" height="31"/>
+                                <rect key="frame" x="20" y="40" width="186" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="186" id="UrE-rf-9ch"/>
                                 </constraints>
@@ -233,19 +232,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DateLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bid-ZP-nRO" userLabel="Date Label">
-                                <rect key="frame" x="20" y="167" width="186" height="27.5"/>
+                                <rect key="frame" x="20" y="79" width="186" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlD-gf-LTg">
-                                <rect key="frame" x="20" y="218" width="50.5" height="62"/>
+                                <rect key="frame" x="20" y="130" width="50.5" height="62"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="45"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vyL-wI-y1M">
-                                <rect key="frame" x="20" y="662" width="374" height="120"/>
+                                <rect key="frame" x="20" y="608" width="374" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="ALt-Vb-N8F"/>
@@ -373,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1597" y="15"/>
+            <point key="canvasLocation" x="1978" y="15"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vH7-00-JHs">
@@ -392,9 +391,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SrY-MY-2Hz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-220.28985507246378" y="38.839285714285715"/>
+            <point key="canvasLocation" x="-648" y="39"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="FI2-9q-NfL"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="50n" width="512" height="512"/>
         <image name="catalinaD" width="512" height="512"/>

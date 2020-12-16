@@ -7,27 +7,24 @@
 
 import Foundation
 
-struct ForecastWeather {
-    var forecast = [ForecastInfo]()
+struct ForecastInfo : Decodable {
+    var list : [List]?
 }
 
-struct ForecastInfo : Codable {
-    let list : [List]?
+struct List: Decodable {
+    var dt: Int?
+    var main: MainF?
+    var weather: [WeatherF]?
+    var dt_txt: String?
 }
 
-struct List: Codable {
-    let dt: Int?
-    let main: [MainF]?
-    let weather: [WeatherF]?
-    let dt_txt: String?
+struct MainF : Decodable {
+    var temp : Double?
 }
 
-struct MainF : Codable {
-    let temp : Double?
-}
-
-struct WeatherF : Codable {
-    let icon : String?
+struct WeatherF : Decodable {
+    var icon : String?
+    var main : String?
 }
 
 

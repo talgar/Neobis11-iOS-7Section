@@ -10,12 +10,11 @@ import Alamofire
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var currentWeather : NetworkManager!
     var dayOrNight = ""
-    
     var dayList: [List] = []
     var nightList: [List] = []
     var dt: Int = 0
+    
     
     @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
@@ -30,47 +29,53 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        loadCurrentWeather()
+        loadForecastWeather()
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.navigationBar.isHidden = false
-//        self.navigationController?.navigationBar.tintColor = .white
-//        self.navigationController?.navigationBar.barTintColor = .clear
-//    }
 
     
-    func updateCurrentWeather() {
-        
-//        cityLabel.text = currentWeather.modelCurrent.current
-//        tempLabel.text = "\(Int(currentWeather.modelCurrent.current.))°C"
-//            descriptionLabel.text = currentWeather.description
-//            dateLabel.text = currentWeather.date
-//
-//            self.dayOrNight = currentWeather.icon
-//
-//            if dayOrNight.last! == "d" {
-//                dayOrNight = "d"
-//                self.dayView()
-//            } else {
-//                dayOrNight = "n"
-//                self.nightView()
-//            }
-//
+    func loadCurrentWeather(){
+        NetworkManager.shared.loadCurrentWeather(completion: updateCurrentWeather)
     }
     
-//    func updateForecastWeather(info: ForecastWeather) {
-//        
-//        self.dt = info.list![0].dt!
-//        
-//        for item in info.list! {
-//            if item.dt_txt!.suffix(8) == "15:00:00" {
-//                self.dayList.append(item)
-//            } else if item.dt_txt!.suffix(8) == "03:00:00" {
-//                self.nightList.append(item)
-//            }
-//        }
-//        self.collectionView.reloadData()
-//    }
+    func loadForecastWeather(){
+        NetworkManager.shared.loadForecastWeather(completion: updateForecastWeather)
+    }
+    
+    func updateCurrentWeather(information: CurrentInfo) {
+        
+        cityLabel.text = information.name
+        tempLabel.text =  "\(Int((information.main?.temp)!))°C"
+        descriptionLabel.text = (information.weather?[0].main)
+        dateLabel.text = information.dt?.convertToWD(dt)
+
+        self.dayOrNight = (information.weather?[0].icon)!
+        
+            if dayOrNight.last! == "d" {
+                dayOrNight = "d"
+                backgroundView.image = UIImage(named: "catalinaD")
+                iconView.image = UIImage(named: (information.weather?[0].icon)!)!
+            } else {
+                dayOrNight = "n"
+                backgroundView.image = UIImage(named: "catalinaN")
+                iconView.image = UIImage(named: (information.weather?[0].icon)!)!
+            }
+    }
+    
+    func updateForecastWeather(info: ForecastInfo) {
+        
+        self.dt = info.list![0].dt!
+        
+        for item in info.list! {
+            if item.dt_txt!.suffix(8) == "15:00:00" {
+                self.dayList.append(item)
+            } else if item.dt_txt!.suffix(8) == "03:00:00" {
+                self.nightList.append(item)
+            }
+        }
+        self.collectionView.reloadData()
+    }
+    
     
     //MARK: CollectionView for ForecastWeather
     
@@ -86,29 +91,16 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
         cell.layer.cornerRadius = 16
-//        cell.dayTempLabel.text = dayList[indexPath.row].main!.temp!.convertToCelsius()
-//        cell.nightTempLabel.text = nightList[indexPath.row].main!.temp!.convertToCelsius()
+        cell.dayTempLabel.text = "\(Int(((dayList[indexPath.row].main?.temp!)!)))°"
+        cell.nightTempLabel.text = "\(Int(((nightList[indexPath.row].main?.temp!)!)))°"
         cell.weekDayLabel.text = dt.convertToWD(indexPath.row)
-        cell.forecastWImageView.image = UIImage(named:dayList[indexPath.row].weather![0].icon!)
+        cell.forecastWImageView.image = UIImage(named:(dayList[indexPath.row].weather?[0].icon)!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: 180, height: 120)
     }
-    
-    
-    //MARK: funcs for backView and weather icon
-//    
-//    func dayView(){
-//        backgroundView.image = UIImage(named: "catalinaD")
-//        iconView.image = UIImage(named:currentWeather.icon)
-//    }
-//    
-//    func nightView(){
-//        backgroundView.image = UIImage(named: "catalinaN")
-//        iconView.image = UIImage(named:currentWeather.icon)
-//    }
 }
 
 

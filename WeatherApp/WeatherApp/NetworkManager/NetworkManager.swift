@@ -11,51 +11,58 @@ import SwiftyJSON
 
 class NetworkManager {
     
-    var modelCurrent = CurrentWeather()
-    var modelForecast = ForecastWeather()
+    var cityName = ""
+    let main = "https://api.openweathermap.org/data/2.5/"
+    let key = "0f6112b1d663b03202ffabe9788c51ef"
+    let tempType = "&units=metric"
     
-    func loadCurrentWeather(cityName: String, completed: @escaping () -> ()) {
-        let jsonUrlString = "https://api.openweathermap.org/data/2.5/weather?q=\(String(describing: cityName))&appid=0f6112b1d663b03202ffabe9788c51ef"
-         
-        guard let url = URL(string : jsonUrlString) else { return }
-        let session = URLSession.shared
+    static let shared = NetworkManager()
+    
+    func loadCurrentWeather( completion: @escaping (CurrentInfo)->() ) {
         
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error)
-            }
+        let jsonUrlString = "\(main)weather?q=\(cityName)\(tempType)&appid=\(key)"
+        
+        guard let url = URL(string: jsonUrlString) else { return }
+        
+        Alamofire.request(url).validate().responseJSON { (response) in
+            let result = response.data
+            
             do {
-                let result = try JSONDecoder().decode(CurrentInfo.self, from: data ?? Data())
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
+                let information = try decoder.decode(CurrentInfo.self, from: result!)
                 
-                self.modelCurrent.current.append(result)
-            } catch {
-                print("Error")
+                DispatchQueue.main.async {
+                    completion(information)
+                }
+            }  catch let jsonErr {
+                print("Error serializing json:", jsonErr)
             }
-        }.resume()
+        }
     }
     
-    func loadForecastWeather(cityName: String, completed: @escaping () -> ()) {
-
-        let jsonUrlString = "http://api.openweathermap.org/data/2.5/forecast?q=\(String(describing: cityName))&appid=0f6112b1d663b03202ffabe9788c51ef"
-
-        guard let url = URL(string: jsonUrlString) else { return }
-        let session = URLSession.shared
+    
+    func loadForecastWeather( completion: @escaping (ForecastInfo)->()) {
         
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error)
-            }
+        let jsonUrlString = "\(main)forecast?q=\(cityName)\(tempType)&appid=\(key)"
+        
+        guard let url = URL(string: jsonUrlString) else { return }
+        
+        Alamofire.request(url).validate().responseJSON { (response) in
+            let result = response.data
+            
             do {
-                let result = try JSONDecoder().decode(ForecastInfo.self, from: data ?? Data())
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
+                let information = try decoder.decode(ForecastInfo.self, from: result!)
                 
-                self.modelForecast.forecast.append(result)
-                
-            } catch {
-                print("Error")
+                DispatchQueue.main.async {
+                    completion(information)
+                }
+            }  catch let jsonErr {
+                print("Error serializing json:", jsonErr)
             }
-        }.resume()
-
+        }
     }
 }
-    
 

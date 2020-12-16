@@ -8,36 +8,14 @@
 import UIKit
 
 class LocationVC: UITableViewController {
-
-    let network = NetworkManager()
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-            
         tableView.tableFooterView = UIView()
         loadData()
-            tableView.reloadData()
+        tableView.reloadData()
     }
     
-    @IBAction func unwinFromAddLocation(segue: UIStoryboardSegue) {
-        let source = segue.source as! AddLocationsVC
-        
-        network.loadCurrentWeather(cityName: source.locationName) {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            print("DONE \(source.locationName)")
-            print("DONE \(self.network.modelCurrent.current)")
-        }
-        network.loadForecastWeather(cityName: source.locationName) {
-            DispatchQueue.main.async {
-                print("DONE \(source.locationName)")
-                print("SHOW HERE GETTING JSON\(self.network.modelForecast.forecast)")
-            }
-        }
-    }
-    
-
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = "Locations"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24)]
@@ -46,12 +24,10 @@ class LocationVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return locationList.count
     }
     
@@ -62,13 +38,12 @@ class LocationVC: UITableViewController {
         let location = locationList[indexPath.row]
         
         cell.textLabel!.text = location.name
-        
+
         return cell
     }
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
     
@@ -83,5 +58,10 @@ class LocationVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        let info = locationList[indexPath.row]
+        NetworkManager.shared.cityName = (cell?.textLabel?.text!)!
+        performSegue(withIdentifier: "MainViewController", sender: info)
     }
 }

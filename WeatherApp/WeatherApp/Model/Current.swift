@@ -7,24 +7,20 @@
 
 import Foundation
 
-struct CurrentWeather {
-    var current = [CurrentInfo]()
-}
-
-struct CurrentInfo : Codable {
+struct CurrentInfo : Decodable {
     var weather : [WeatherC]?
-    var main : [MainC]?
-    var dt : Int?
+    var main : MainC?
+     var dt : Int?
     var name : String?
 }
 
-struct WeatherC : Codable {
-    let main : String?
-    let description : String?
-    let icon : String?
+struct WeatherC : Decodable {
+    var main : String?
+    var description : String?
+    var icon : String?
 }
 
-struct MainC : Codable {
-    let temp : Double?
+struct MainC : Decodable {
+    var temp : Double?
 }
 

@@ -18,7 +18,6 @@ class Locations : Codable {
 
 var locationList = [Locations]()
 
-
 func addLocation(name : String)  {
     locationList.append(Locations(name: name))
     saveData()
